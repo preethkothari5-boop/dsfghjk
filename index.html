@@ -37,6 +37,8 @@ button:focus-visible{outline:2px solid var(--orc);outline-offset:3px}
 .hl.t{top:max(28px,env(safe-area-inset-top))}.hl.b{bottom:max(34px,env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:center;gap:14px}
 .hl small{opacity:.6;font-size:11px;letter-spacing:.3em;text-transform:uppercase}
 /* chapters */
+function nv(v){/\.mp4$/.test(v.src)?v.src=v.src.replace(/\.mp4$/,".MP4"):v.remove()}
+function nx(i){const E=["jpg","JPG","jpeg","JPEG","png","PNG","webp"],k=+(i.dataset.k||0)+1;if(k<E.length){i.dataset.k=k;i.src=i.src.replace(/\.\w+$/,"."+E[k])}else i.remove()}
 .gh{position:absolute;left:3vw;top:4vh;font:clamp(120px,30vw,380px)/1 "Instrument Serif",serif;color:transparent;-webkit-text-stroke:1px #f5c84b30;pointer-events:none;white-space:nowrap}
 .ch{display:grid;gap:34px;align-items:center;max-width:1100px;margin:auto;width:100%;position:relative}
 .ch h3{font-size:clamp(38px,7.5vw,72px);line-height:1;margin:10px 0 14px}
@@ -77,7 +79,7 @@ button:focus-visible{outline:2px solid var(--orc);outline-offset:3px}
 <button id="moon" aria-label="A secret"></button>
 <button id="music" aria-label="Music"><i></i><i></i><i></i></button>
 <div id="toast"></div>
-<audio id="aud" src="music/yellow.mp3" loop></audio>
+<audio id="aud" src="yellow.mp3" loop></audio>
 
 <section id="hero">
   <canvas id="hc"></canvas>
@@ -122,7 +124,7 @@ button:focus-visible{outline:2px solid var(--orc);outline-offset:3px}
 <section id="fin">
   <p class="eb">happy birthday, khushi</p>
   <div id="letter" class="serif"></div>
-  <div class="md glass" style="aspect-ratio:16/9;max-width:560px"><span>Video message<br>videos/for-khushi.mp4</span><video src="videos/for-khushi.mp4" controls playsinline onerror="this.remove()"></video></div>
+  <div class="md glass" style="aspect-ratio:16/9;max-width:560px"><span>Video message<br>for-khushi.mp4</span><video src="for-khushi.mp4" controls playsinline onerror="nv(this)"></video></div>
   <p class="eb">one more thing · scratch</p>
   <div style="position:relative;width:min(320px,86vw);height:170px">
     <div class="serif" style="position:absolute;inset:0;border-radius:22px;background:linear-gradient(135deg,#f5c84b,#ff8a5c);color:#2a1500;display:grid;place-items:center;padding:16px;font-size:26px;line-height:1.15">One free ice-cream date with Preeth. Valid on our next meet.</div>
@@ -133,14 +135,14 @@ button:focus-visible{outline:2px solid var(--orc);outline-offset:3px}
 <script>
 /* ===== EDIT ME ===== */
 const MEM=[
- {g:"01",d:"25 Sep 2025",t:"I said it <em>first.</em>",x:"I told you how I felt, and the answer was no. I’d say that was the start of the story, not the end of it.",p:"images/01-sep-2025.jpg"},
- {g:"02",d:"20 Oct 2026 · 1:19 AM",t:"You said it <em>back.</em>",x:"A year later, at 1:19 AM, you confessed. Best message of my life. Worth every single day I waited.",p:"images/02-confession-1-19am.jpg"},
- {g:"03",d:"20 Oct 2026 · 4:43 PM",t:"First <em>meet.</em>",x:"Outside Winn Xerox, Pursaiwalkam. I was nervous. You were so cute. That was it for me.",p:"images/03-first-meet.jpg"},
- {g:"04",d:"21 Oct 2026",t:"Outside <em>school,</em> 3:30",x:"Waiting for you outside school after 3:30, then Amul Parlour. Any plan is a good plan with you.",p:"images/04-outside-school.jpg"},
+ {g:"01",d:"25 Sep 2025",t:"I said it <em>first.</em>",x:"I told you how I felt, and the answer was no. I’d say that was the start of the story, not the end of it.",p:"01-sep-2025.jpg"},
+ {g:"02",d:"20 Oct 2026 · 1:19 AM",t:"You said it <em>back.</em>",x:"A year later, at 1:19 AM, you confessed. Best message of my life. Worth every single day I waited.",p:"02-confession-1-19am.jpg"},
+ {g:"03",d:"20 Oct 2026 · 4:43 PM",t:"First <em>meet.</em>",x:"Outside Winn Xerox, Pursaiwalkam. I was nervous. You were so cute. That was it for me.",p:"03-first-meet.jpg"},
+ {g:"04",d:"21 Oct 2026",t:"Outside <em>school,</em> 3:30",x:"Waiting for you outside school after 3:30, then Amul Parlour. Any plan is a good plan with you.",p:"04-outside-school.jpg"},
  {g:"05",d:"24 Oct 2026",t:"The <em>balcony.</em>",x:"A night at Prince Courtyard, and then you at the balcony saying hiii. My heart did a full flip.",p:null},
- {g:"06",d:"25 Oct 2026",t:"Sugarcane & <em>Mogu Mogu.</em>",x:"Winn Xerox again, sugarcane juice, Swapna Lok, and you bought me a watermelon Mogu Mogu. I still remember.",p:"images/06-sugarcane-mogu-mogu.jpg"},
- {g:"07",d:"8 Nov 2026",t:"Diwali in <em>Sowcarpet.</em>",x:"Belgian waffle, a scooter, and roaming everywhere with you. The best Diwali.",p:"images/07-diwali-sowcarpet.jpg"},
- {g:"08",d:"23 Nov 2026",t:"Today. <em>17.</em>",x:"Your birthday. I’m far away today, so I built you a universe. Next time, I’m coming to you.",p:"images/08-today.jpg"}];
+ {g:"06",d:"25 Oct 2026",t:"Sugarcane & <em>Mogu Mogu.</em>",x:"Winn Xerox again, sugarcane juice, Swapna Lok, and you bought me a watermelon Mogu Mogu. I still remember.",p:"06-sugarcane-mogu-mogu.jpg"},
+ {g:"07",d:"8 Nov 2026",t:"Diwali in <em>Sowcarpet.</em>",x:"Belgian waffle, a scooter, and roaming everywhere with you. The best Diwali.",p:"07-diwali-sowcarpet.jpg"},
+ {g:"08",d:"23 Nov 2026",t:"Today. <em>17.</em>",x:"Your birthday. I’m far away today, so I built you a universe. Next time, I’m coming to you.",p:"08-today.jpg"}];
 const FACTS=["Only I know: you hate coffee.","Only I know: you hate mints.","You owe yourself an ice cream. It’s been too long.","Kiki waffle. No crumbles on top. Always."];
 let LETTER="Khushi,\n\n(Preeth’s letter goes here. Edit LETTER in the code.)\n\n— Preeth";
 /* ==================== */
@@ -166,7 +168,7 @@ let HW,HH,PT=[],si=0,hp={x:-999,y:-999},hv=true;
 for(let i=0;i<2600;i++)PT.push({x:Math.random(),y:Math.random(),vx:0,vy:0,tx:0,ty:0,c:["#f5c84b","#f5c84b","#ff8a5c","#fff1c9","#b79cff"][i%5]});
 function pts(L){const o=document.createElement("canvas");o.width=HW;o.height=HH;const c=o.getContext("2d");c.fillStyle="#fff";c.textAlign="center";c.textBaseline="middle";
  if(L[0]=="♥"){const s=Math.min(HW,HH)*.016;c.beginPath();for(let t=0;t<6.3;t+=.03){const x=16*Math.pow(Math.sin(t),3),y=-(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t));c[t?"lineTo":"moveTo"](HW/2+x*s,HH*.46+y*s)}c.fill()}
- else{const m=Math.max(...L.map(l=>l.length)),fs=Math.min(HW/(m*.6),HH*.42/L.length*1.5,HH*.4);c.font=fs+'px "Instrument Serif",Georgia,serif';L.forEach((l,i)=>c.fillText(l,HW/2,HH*.46+(i-(L.length-1)/2)*fs*1.05))}
+ else{const m=Math.max(...L.map(l=>l.length)),fs=Math.min(HW/(m*.78),HH*.42/L.length*1.5,HH*.4);c.font=fs+'px "Instrument Serif",Georgia,serif';L.forEach((l,i)=>c.fillText(l,HW/2,HH*.46+(i-(L.length-1)/2)*fs*1.05))}
  const d=c.getImageData(0,0,HW,HH).data,a=[],st=Math.max(3,Math.round(HW/170));for(let y=0;y<HH;y+=st)for(let x=0;x<HW;x+=st)if(d[(y*HW+x)*4+3]>128)a.push([x,y]);return a.sort(()=>Math.random()-.5)}
 function tg(kick){const T=pts(SEQ[si]);PT.forEach((p,i)=>{const t=T[i%T.length]||[HW/2,HH/2];p.tx=t[0]+(Math.random()-.5)*2;p.ty=t[1]+(Math.random()-.5)*2;if(kick){p.vx+=(Math.random()-.5)*26;p.vy+=(Math.random()-.5)*26}})}
 function hs(){const r=hc.parentNode.getBoundingClientRect();HW=hc.width=r.width*dp;HH=hc.height=r.height*dp;PT.forEach(p=>{if(p.x<=1){p.x=Math.random()*HW;p.y=Math.random()*HH}});tg(false)}
@@ -182,7 +184,7 @@ $("#open").onclick=()=>{aud.play().catch(()=>{});boom();$("#story").scrollIntoVi
 $("#moon").onclick=()=>toast(FACTS[Math.random()*FACTS.length|0]);
 
 /* chapters */
-MEM.forEach(m=>{const s=document.createElement("section"),v=m.p&&m.p.replace("images/","videos/").replace(".jpg",".mp4");s.innerHTML=`<div class="gh">${m.g}</div><div class="ch${m.p?"":" solo"}"><div class="mt rv"><div class="eb">${m.d}</div><h3>${m.t}</h3><p>${m.x}</p></div>${m.p?`<div class="md glass rv"><span>Photo or video<br>${m.p}</span><img src="${m.p}" alt="" onerror="this.remove()"><video src="${v}" muted loop playsinline autoplay onerror="this.remove()"></video></div>`:""}</div>`;$("#story").appendChild(s)});
+MEM.forEach(m=>{const s=document.createElement("section"),v=m.p&&m.p.replace(".jpg",".mp4");s.innerHTML=`<div class="gh">${m.g}</div><div class="ch${m.p?"":" solo"}"><div class="mt rv"><div class="eb">${m.d}</div><h3>${m.t}</h3><p>${m.x}</p></div>${m.p?`<div class="md glass rv"><span>Photo or video<br>${m.p}</span><img src="${m.p}" alt="" onerror="nx(this)"><video src="${v}" muted loop playsinline autoplay onerror="nv(this)"></video></div>`:""}</div>`;$("#story").appendChild(s)});
 $$(".md").forEach(m=>{m.onpointermove=e=>{const r=m.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;m.style.transform=`perspective(700px) rotateY(${x*14}deg) rotateX(${-y*14}deg)`};m.onpointerleave=()=>m.style.transform=""});
 const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add("in")),{threshold:.2});$$(".rv").forEach(e=>io.observe(e));
 addEventListener("scroll",()=>$("#bar").style.width=scrollY/(document.body.scrollHeight-innerHeight)*100+"%",{passive:true});
